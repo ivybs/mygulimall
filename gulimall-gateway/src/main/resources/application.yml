@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: test
+          uri: https://www.qq.com
+          predicates:
+            - Query=url,qq
+
+        #  这里的product_route的顺序需要在admin_route前面
+        #  否则先匹配了admin_route之后就不会再去匹配product_route
+#        - id: product_route
+#              uri: lb://gulimall-product
+#              predicates:
+#                - Path=/api/product/**
+#              filters:
+#                - RewritePath=/api(?<segment>.*),$\{segment}seeeeeeeee
+#
+#        - id: admin_route
+#          uri: lb://renren-fast
+#          predicates:
+#            - Path=/api/**
+#          filters:
+#            - RewritePath=/api(?<segment>.*),/renren-fast$\{segment}
+## 前端项目，都带上/api的前缀
+## http://localhost:88/api/captcha.jpg  http://localhost:8080/renren-fast/capcha.jpg
+
+
+### 感觉这个配置文件没有起作用

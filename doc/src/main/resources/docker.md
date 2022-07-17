@@ -4,12 +4,13 @@
 docker pull mysql
 
 启动mysql服务
-docker run -p 3306:3306 \
+docker run -p 3306:3306 --name mysql \
 -v /mydata/mysql/log:/var/log/mysql \
 -v /mydata/mysql/data:/var/lib/mysql \
 -v /mydata/mysql/conf:/etc/mysql \
--e MYSQL_ROOT_PASSWORD=root \
--d mysql:5.7
+-v /home/mysq/mysql-files:/var/lib/mysql-files/ \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-d mysql:8.0
 ##redis安装
 拉取镜像：
 docker pull redis \
